@@ -3,10 +3,8 @@ import shutil
 from pathlib import Path
 import os
 
-# Define the directory containing the images
 images_dir = Path('F:\\Python GitHub ZygimantasB\\LLM-practice\\AI agent\\images')
 
-# Define target directories for 'drugs' and 'guns'
 drugs_dir = Path('F:\\Python GitHub ZygimantasB\\LLM-practice\\AI agent\\images\\drugs')
 guns_dir = Path('F:\\Python GitHub ZygimantasB\\LLM-practice\\AI agent\\images\\guns')
 
@@ -14,12 +12,10 @@ guns_dir = Path('F:\\Python GitHub ZygimantasB\\LLM-practice\\AI agent\\images\\
 drugs_dir.mkdir(parents=True, exist_ok=True)
 guns_dir.mkdir(parents=True, exist_ok=True)
 
-# List all image files in the directory
-image_files = list(images_dir.glob('*'))  # Adjust pattern as needed to match specific image types
+image_files = list(images_dir.glob('*'))
 
 for image_path in image_files:
     try:
-        # Analyze the image using ollama
         res = ollama.chat(
             model='llava:13b',
             messages=[{
@@ -30,11 +26,9 @@ for image_path in image_files:
             }]
         )
 
-        # Extract the message content
         message_content = res['message']['content'].strip().lower()
         print(message_content)
 
-        # Copy the image to the respective folder based on the content
         if 'drugs' in message_content:
             target_path = drugs_dir / image_path.name
             if not target_path.exists():
