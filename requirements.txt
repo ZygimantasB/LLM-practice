@@ -42,6 +42,7 @@ nest-asyncio==1.6.0
 networkx==3.3
 nltk==3.8.1
 numpy==1.26.4
+ollama==0.2.1
 openai==1.35.7
 packaging==24.1
 pandas==2.2.2
