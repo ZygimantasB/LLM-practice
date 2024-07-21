@@ -1,6 +1,7 @@
 # extensions
 *.xml
 *.iml
+*.csv
 
 ### venv template
 # Virtualenv
